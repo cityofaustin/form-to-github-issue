@@ -18,7 +18,7 @@ class SubmissionsController < ApplicationController
         issue_url.slice!("api.")
         issue_url.slice!("repos/")
         response_status = "success"
-        response_body = "Your feedback has been received. You can stay updated on github at #{issue_url}"
+        response_body = "Your feedback has been received."
       else
         response_status = "error"
         response_body = "We encountered an error with your submission"
@@ -27,6 +27,7 @@ class SubmissionsController < ApplicationController
       render json: {
         status: response_status,
         body: response_body,
+        url: issue_url
       }
     rescue
       render json: {
