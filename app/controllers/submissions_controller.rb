@@ -29,10 +29,10 @@ class SubmissionsController < ApplicationController
         body: response_body,
         url: issue_url
       }
-    rescue
+    rescue => exception
       render json: {
         status: "error",
-        body: "Your submission could not be processed.",
+        body: exception.message,
       }
     end
   end
@@ -40,13 +40,7 @@ class SubmissionsController < ApplicationController
   private
 
     def token_for(repository)
-      feedback_bot = ["api-github-issue"]
-
-      if feedback_bot.include?(repository)
-        return "#{ENV["GITHUB_FEEDBACK_TOKEN"]}"
-      else
-        return false
-      end
+      return "#{ENV["GITHUB_FEEDBACK_TOKEN"]}"
     end
 
 end
