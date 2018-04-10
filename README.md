@@ -21,14 +21,14 @@ The original feature spec stipulated that browser/os/device data should be inclu
 
 ## GitHub Integration
 
-The API uses a [_machine user_](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users) to authenticate API requests. The first implementation uses the [coa-feedback-bot](https://github.com/coa-feedback-bot) account.
+The API uses a [_machine user_](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users) to authenticate API requests. The first implementation uses the [Innovation Engineering - City of Austin](https://github.com/ATX-Inno-Fellows-Engineering) account.
 
 To authenticate a new machine user:
 
 1. Create a new account on Github (this is your machine user)
 2. Create an Access Token (this will be how you make API requests as the machine user)
 3. Add the machine user as a collaborator on the repo(s) you want to create issues for with that machine user
-4. Add a new array in the `token_for` method in `submissions_controller.rb`  to indicate which repositories use the machine user for authentication, and add that array to the lookups that tie the supplied `repository` parameter to a corresponding machine user.
+4. Add the token to your heroku 'GITHUB_FEEDBACK_TOKEN' env variable (in heroku -> settings -> reveal config vars)
 
 ## Quickstart
 
